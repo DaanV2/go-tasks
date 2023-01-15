@@ -1,7 +1,8 @@
 # Go Tasks
 
+![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/DaanV2/go-tasks)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/DaanV2/go-tasks)
 [![🐹 Golang](https://github.com/DaanV2/go-tasks/actions/workflows/go-checks.yml/badge.svg)](https://github.com/DaanV2/go-tasks/actions/workflows/go-checks.yml)
-[![🚚 Tagged Release](https://github.com/DaanV2/go-tasks/actions/workflows/tagged-release.yml/badge.svg)](https://github.com/DaanV2/go-tasks/actions/workflows/tagged-release.yml)
 
 ## Examples
 ```golang
