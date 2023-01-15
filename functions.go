@@ -2,14 +2,17 @@ package tasks
 
 import "context"
 
+// functions is a collection of functions to be run on different stages of the task.
 type functions[T any] struct {
 	fns []func(state *T, ctx context.Context) error
 }
 
+// Add adds a function to the collection.
 func (fns *functions[T]) Add(fn func(state *T, ctx context.Context) error) {
 	fns.fns = append(fns.fns, fn)
 }
 
+// Run runs the functions in the collection, and returns the first error encountered.
 func (fns *functions[T]) Run(state *T, ctx context.Context) error {
 	done := ctx.Done()
 
@@ -27,6 +30,7 @@ func (fns *functions[T]) Run(state *T, ctx context.Context) error {
 	return nil
 }
 
+// RunParallel runs the functions in the collection in parallel, and returns the first error encountered.
 func (fns *functions[T]) RunParallel(state *T, ctx context.Context) error {
 	done := ctx.Done()
 
@@ -55,14 +59,17 @@ func (fns *functions[T]) RunParallel(state *T, ctx context.Context) error {
 	return nil
 }
 
+// errorFunctions is a collection of functions to be run on different stages of the task.
 type errorFunctions[T any] struct {
 	fns []func(state *T, ctx context.Context, err error)
 }
 
+// Add adds a function to the collection.
 func (fns *errorFunctions[T]) Add(fn func(state *T, ctx context.Context, err error)) {
 	fns.fns = append(fns.fns, fn)
 }
 
+// Run runs the functions in the collection.
 func (fns *errorFunctions[T]) Run(state *T, ctx context.Context, err error) {
 	done := ctx.Done()
 

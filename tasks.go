@@ -4,6 +4,7 @@ import (
 	"context"
 )
 
+// hooks is a collection of functions to be run on different stages of the task.
 type hooks[T any] struct {
 	todo    functions[T]
 	then    functions[T]
@@ -11,6 +12,7 @@ type hooks[T any] struct {
 	onerror errorFunctions[T]
 }
 
+// Task is a collection of functions to be run in a specific order.
 type Task[T any] struct {
 	//Collection of functions to run on different stages of the task
 	hooks[T]
@@ -19,15 +21,18 @@ type Task[T any] struct {
 	state *T
 }
 
+// New returns a new task with a new state.
 func New[T any]() *Task[T] {
 	var state T
 	return NewWith(&state)
 }
 
+// NewWith returns a new task with the given state.
 func NewWith[T any](state *T) *Task[T] {
 	return &Task[T]{state: state}
 }
 
+// State returns the state of the task.
 func (t *Task[T]) State() *T {
 	return t.state
 }
@@ -74,11 +79,13 @@ func (t *Task[T]) Run(ctx context.Context) (err error) {
 	return
 }
 
+// Do adds a function to be called when the task is run. The function will be run in parallel with other functions added with Do.
 func (t *Task[T]) Do(fns func(state *T, ctx context.Context) error) *Task[T] {
 	t.todo.Add(fns)
 	return t
 }
 
+// Then adds a function to be called after all functions added with Do have been called. and no errors have been returned.
 func (t *Task[T]) Then(fns func(state *T, ctx context.Context) error) *Task[T] {
 	t.then.Add(fns)
 	return t

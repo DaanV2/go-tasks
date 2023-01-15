@@ -2,6 +2,7 @@ package tasks
 
 import "github.com/pkg/errors"
 
+// combineErrors combines two errors into one.
 func combineErrors(err1, err2 error) error {
 	if err1 == nil {
 		return err2
