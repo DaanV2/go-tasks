@@ -18,7 +18,7 @@ func Test_IfElse(t *testing.T) {
 				called = true
 				return nil
 			},
-		)(nil, nil)
+		)(nil, context.Background())
 		assert.NoError(t, err)
 
 		if called {
@@ -37,7 +37,7 @@ func Test_IfElse(t *testing.T) {
 				called = true
 				return nil
 			},
-		)(nil, nil)
+		)(nil, context.Background())
 		assert.NoError(t, err)
 
 		if !called {
