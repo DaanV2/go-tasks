@@ -4,6 +4,9 @@
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/DaanV2/go-tasks)
 [![🐹 Golang](https://github.com/DaanV2/go-tasks/actions/workflows/go-checks.yml/badge.svg)](https://github.com/DaanV2/go-tasks/actions/workflows/go-checks.yml)
 
+A package that allows you to easily parallelize tasks and chain them together.
+As well as allowing you to easily create a task that can be reused.
+
 ## Examples
 ```golang
 //State object
