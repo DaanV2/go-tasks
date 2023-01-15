@@ -59,7 +59,7 @@ task.
 
 newTask := task.CopyFor(&User{Email: "foo@bar.com"})
 
-//Example 3
+//Example 4
 next := task.Chain(New[User]())
 next.
 	Do(ValidateUser).
