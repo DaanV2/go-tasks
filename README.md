@@ -1,5 +1,8 @@
 # Go Tasks
 
+[![🐹 Golang](https://github.com/DaanV2/go-tasks/actions/workflows/go-checks.yml/badge.svg)](https://github.com/DaanV2/go-tasks/actions/workflows/go-checks.yml)
+[![🚚 Tagged Release](https://github.com/DaanV2/go-tasks/actions/workflows/tagged-release.yml/badge.svg)](https://github.com/DaanV2/go-tasks/actions/workflows/tagged-release.yml)
+
 ## Examples
 ```golang
 //State object
